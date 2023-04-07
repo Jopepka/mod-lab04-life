@@ -15,8 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SaveJson\BoardSettings\" />
-    <Folder Include="SaveJson\RenderSettings\" />
+    <PackageReference Include="ScottPlot" Version="4.1.62" />
   </ItemGroup>
 
 </Project>

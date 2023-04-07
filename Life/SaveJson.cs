@@ -9,10 +9,12 @@ namespace Life
         {
             if (!File.Exists(path))
                 File.Create(path).Close();
+
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true
             };
+
             string jsonStr = JsonSerializer.Serialize(obj, options: options);
             File.AppendAllText(path, jsonStr);
         }
