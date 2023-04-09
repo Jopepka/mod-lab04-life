@@ -1,4 +1,5 @@
 using Life;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestNewOpportunity
 {
@@ -9,7 +10,7 @@ namespace TestNewOpportunity
         [TestMethod]
         public void TestLoad3()
         {
-            string path = "SaveJson\\TestLoad2.txt";
+            string path = "C:/Users/mr_fi/source/repos/mod-lab04-life/TestNewOpportunity/SaveJson/TestLoad2.txt";
             SettingsMap[] settingsLoad = SaveJson<SettingsMap[]>.LoadFromJSon(path);
 
             Assert.IsNotNull(settingsLoad);
@@ -18,7 +19,9 @@ namespace TestNewOpportunity
         [TestMethod]
         public void TestMethod2()
         {
-            SettingsMap settingsMap = new SettingsMap(50, 50);
+            SettingsMap settingsMap = new SettingsMap();
+            settingsMap.Colums = 50;
+            settingsMap.Rows = 50;
             SettingsRender settingsRender = new SettingsRender();
             string pathSave = "SaveJson\\";
 
@@ -52,7 +55,9 @@ namespace TestNewOpportunity
         [TestMethod]
         public void TestMethod3()
         {
-            SettingsMap settingsMap = new SettingsMap(50, 50);
+            SettingsMap settingsMap = new SettingsMap();
+            settingsMap.Colums = 50;
+            settingsMap.Rows = 50;
             SettingsRender settingsRender = new SettingsRender();
             string pathSave = "SaveJson\\";
 
@@ -84,7 +89,9 @@ namespace TestNewOpportunity
         [TestMethod]
         public void TestMethod4()
         {
-            SettingsMap settingsMap = new SettingsMap(50, 50);
+            SettingsMap settingsMap = new SettingsMap();
+            settingsMap.Colums = 50;
+            settingsMap.Rows = 50;
             SettingsRender settingsRender = new SettingsRender();
             string pathSave = "SaveJson\\";
 
@@ -118,7 +125,9 @@ namespace TestNewOpportunity
         [TestMethod]
         public void TestMethod5()
         {
-            SettingsMap settingsMap = new SettingsMap(6, 6);
+            SettingsMap settingsMap = new SettingsMap();
+            settingsMap.Colums = 6;
+            settingsMap.Rows = 6;
             SettingsRender settingsRender = new SettingsRender();
             string pathSave = "SaveJson\\";
 
@@ -150,7 +159,9 @@ namespace TestNewOpportunity
         [TestMethod]
         public void TestMethod6()
         {
-            SettingsMap settingsMap = new SettingsMap(5, 5);
+            SettingsMap settingsMap = new SettingsMap();
+            settingsMap.Colums = 5;
+            settingsMap.Rows = 5;
             SettingsRender settingsRender = new SettingsRender();
             string pathSave = "SaveJson\\";
 
