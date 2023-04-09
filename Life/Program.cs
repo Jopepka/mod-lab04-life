@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using Life;
 
@@ -15,10 +16,7 @@ namespace cli_life
 
         static private void Reset()
         {
-            SettingsMap settings = new SettingsMap();
-            settings.Colums = 100;
-            settings.Rows = 40;
-            settings.Name = "MainBoard";
+            SettingsMap settings = new SettingsMap(100, 40, name: "MainBoard");
             board = new Board(settings, new SphereConnect(), 0.5);
 
             string path = "Figurs.txt";
@@ -49,8 +47,6 @@ namespace cli_life
                 Console.Clear();
                 renderToConsole.RenderStep();
                 board.Advance();
-                Console.Clear();
-                renderToConsole.RenderStep();
                 Thread.Sleep(sRB.TimeDelay);
                 while (breakProgram)
                     Thread.Sleep(100);
@@ -99,6 +95,19 @@ namespace cli_life
                 }
                 Console.WriteLine(ans);
             }
+        }
+
+        static void CriateMoreFig()
+        {
+            List<SettingsMap> bSettings = new List<SettingsMap>
+            {
+                new SettingsMap(4, 4, "0000\n0110\n0110\n0000\n", "cube"),
+                new SettingsMap(5, 3, "00000\n01110\n00000\n", "stick"),
+                new SettingsMap(3, 5, "000\n010\n010\n010\n000\n", "stick"),
+                new SettingsMap(5, 5, "00000\n00100\n01010\n00100\n00000\n", "box")
+            };
+
+            SaveJson<List<SettingsMap>>.SaveToJson("C:\\Users\\mr_fi\\source\\repos\\mod-lab04-life\\Life\\Figurs.json", bSettings);
         }
     }
 }

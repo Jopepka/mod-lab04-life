@@ -12,11 +12,7 @@
         {
             get
             {
-                SettingsMap settings = new SettingsMap();
-                settings.Name = Name;
-                settings.Colums = Colums;
-                settings.Rows = Rows;
-                settings.BoardStr = CriateStrFromCells(Cells);
+                SettingsMap settings = new SettingsMap(Colums, Rows, CriateStrFromCells(Cells), Name);
                 return settings;
             }
         }
@@ -113,20 +109,6 @@
             }
 
             return (double)(countLive) / countEmpty;
-        }
-
-        public bool CheckCorrectStrCells(string boardStr)
-        {
-            string[] strRows = boardStr.Split('\n');
-
-            if (strRows.Length - 1 != Rows)
-                return false;
-
-            for (int i = 0; i < strRows.Length - 1; i++)
-                if (strRows[i].Length != Colums)
-                    return false;
-
-            return true;
         }
     }
 }

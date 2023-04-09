@@ -13,14 +13,9 @@ namespace Life
                 throw new NullReferenceException("LiveDensity and BoardStr in " +
                 "Settings cannot be Null at the same time");
 
-            if (settings.BoardStr == null)
-                Cells = CriateRandomizeCells((double)liveDensity, rand);
-            else
-            {
-                if (!CheckCorrectStrCells(settings.BoardStr))
-                    throw new ArgumentException("Incorrect BoardStr in settings");
-                Cells = CriateCellsFromStr(settings.BoardStr);
-            }
+            Cells = settings.BoardStr == null ?
+                CriateRandomizeCells((double)liveDensity, rand) :
+                CriateCellsFromStr(settings.BoardStr);
         }
 
         protected Cell[,] CriateRandomizeCells(double liveDensity, Random rd)
