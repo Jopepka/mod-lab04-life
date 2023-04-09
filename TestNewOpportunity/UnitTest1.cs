@@ -10,7 +10,7 @@ namespace TestNewOpportunity
         [TestMethod]
         public void TestLoad3()
         {
-            string path = "C:/Users/mr_fi/source/repos/mod-lab04-life/TestNewOpportunity/SaveJson/TestLoad2.txt";
+            string path = "SaveJson/TestLoad2.txt";
             SettingsMap[] settingsLoad = SaveJson<SettingsMap[]>.LoadFromJSon(path);
 
             Assert.IsNotNull(settingsLoad);
@@ -23,7 +23,7 @@ namespace TestNewOpportunity
             settingsMap.Colums = 50;
             settingsMap.Rows = 50;
             SettingsRender settingsRender = new SettingsRender();
-            string pathSave = "SaveJson\\";
+            string pathSave = "SaveJson/";
 
 
             SettingsMap settingsFigureCub = SaveJson<SettingsMap>.LoadFromJSon(pathSave + "FigureCub.txt");
@@ -59,7 +59,7 @@ namespace TestNewOpportunity
             settingsMap.Colums = 50;
             settingsMap.Rows = 50;
             SettingsRender settingsRender = new SettingsRender();
-            string pathSave = "SaveJson\\";
+            string pathSave = "SaveJson/";
 
 
             SettingsMap settingsFigureCub = SaveJson<SettingsMap>.LoadFromJSon(pathSave + "FigureCub.txt");
@@ -93,7 +93,7 @@ namespace TestNewOpportunity
             settingsMap.Colums = 50;
             settingsMap.Rows = 50;
             SettingsRender settingsRender = new SettingsRender();
-            string pathSave = "SaveJson\\";
+            string pathSave = "SaveJson/";
 
 
             SettingsMap settingsFigureCub = SaveJson<SettingsMap>.LoadFromJSon(pathSave + "FigureCub.txt");
@@ -129,7 +129,7 @@ namespace TestNewOpportunity
             settingsMap.Colums = 6;
             settingsMap.Rows = 6;
             SettingsRender settingsRender = new SettingsRender();
-            string pathSave = "SaveJson\\";
+            string pathSave = "SaveJson/";
 
 
             SettingsMap settingsFigureCub = SaveJson<SettingsMap>.LoadFromJSon(pathSave + "FigureCub.txt");
@@ -163,7 +163,7 @@ namespace TestNewOpportunity
             settingsMap.Colums = 5;
             settingsMap.Rows = 5;
             SettingsRender settingsRender = new SettingsRender();
-            string pathSave = "SaveJson\\";
+            string pathSave = "SaveJson/";
 
 
             SettingsMap settingsFigureStick = SaveJson<SettingsMap>.LoadFromJSon(pathSave + "FigureStick.txt");
