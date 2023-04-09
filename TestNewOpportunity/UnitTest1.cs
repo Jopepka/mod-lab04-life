@@ -1,4 +1,5 @@
 using Life;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestNewOpportunity
 {
@@ -9,7 +10,7 @@ namespace TestNewOpportunity
         [TestMethod]
         public void TestLoad3()
         {
-            string path = "SaveJson\\TestLoad2.txt";
+            string path = "SaveJson/TestLoad2.txt";
             SettingsMap[] settingsLoad = SaveJson<SettingsMap[]>.LoadFromJSon(path);
 
             Assert.IsNotNull(settingsLoad);
@@ -20,7 +21,7 @@ namespace TestNewOpportunity
         {
             SettingsMap settingsMap = new SettingsMap(50, 50);
             SettingsRender settingsRender = new SettingsRender();
-            string pathSave = "SaveJson\\";
+            string pathSave = "SaveJson/";
 
 
             SettingsMap settingsFigureCub = SaveJson<SettingsMap>.LoadFromJSon(pathSave + "FigureCub.txt");
@@ -54,7 +55,7 @@ namespace TestNewOpportunity
         {
             SettingsMap settingsMap = new SettingsMap(50, 50);
             SettingsRender settingsRender = new SettingsRender();
-            string pathSave = "SaveJson\\";
+            string pathSave = "SaveJson/";
 
 
             SettingsMap settingsFigureCub = SaveJson<SettingsMap>.LoadFromJSon(pathSave + "FigureCub.txt");
@@ -86,7 +87,7 @@ namespace TestNewOpportunity
         {
             SettingsMap settingsMap = new SettingsMap(50, 50);
             SettingsRender settingsRender = new SettingsRender();
-            string pathSave = "SaveJson\\";
+            string pathSave = "SaveJson/";
 
 
             SettingsMap settingsFigureCub = SaveJson<SettingsMap>.LoadFromJSon(pathSave + "FigureCub.txt");
@@ -120,7 +121,7 @@ namespace TestNewOpportunity
         {
             SettingsMap settingsMap = new SettingsMap(6, 6);
             SettingsRender settingsRender = new SettingsRender();
-            string pathSave = "SaveJson\\";
+            string pathSave = "SaveJson/";
 
 
             SettingsMap settingsFigureCub = SaveJson<SettingsMap>.LoadFromJSon(pathSave + "FigureCub.txt");
@@ -152,7 +153,7 @@ namespace TestNewOpportunity
         {
             SettingsMap settingsMap = new SettingsMap(5, 5);
             SettingsRender settingsRender = new SettingsRender();
-            string pathSave = "SaveJson\\";
+            string pathSave = "SaveJson/";
 
 
             SettingsMap settingsFigureStick = SaveJson<SettingsMap>.LoadFromJSon(pathSave + "FigureStick.txt");
