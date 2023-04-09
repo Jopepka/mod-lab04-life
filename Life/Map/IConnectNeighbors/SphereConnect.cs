@@ -1,6 +1,6 @@
 ﻿namespace Life
 {
-    internal class SphereConnect : IConnectNeighbors
+    public class SphereConnect : IConnectNeighbors
     {
         public Cell[,] Connect(Cell[,] cells)
         {

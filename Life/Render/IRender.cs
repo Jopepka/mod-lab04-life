@@ -2,8 +2,8 @@
 {
     public interface IRender
     {
-        public void Render(Board board, SettingsRender settingsBoard);
+        public void Render();
 
-        public void RenderStep(Board board, SettingsRender settingsBoard);
+        public void RenderStep();
     }
 }

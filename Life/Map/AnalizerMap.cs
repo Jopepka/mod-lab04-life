@@ -1,4 +1,6 @@
-﻿namespace Life
+﻿using System.Collections.Generic;
+
+namespace Life
 {
     public static class AnalizerMap
     {
@@ -7,7 +9,7 @@
             return map.LiveDensity;
         }
 
-        public static bool VerticalSymmety(Map map)
+        public static bool VerticalSymmetry(Map map)
         {
             int midX = map.Colums / 2;
 
@@ -21,7 +23,7 @@
             return true;
         }
 
-        public static bool HorizontalSymmety(Map map)
+        public static bool HorizontalSymmetry(Map map)
         {
             int midY = map.Rows / 2;
 
@@ -35,57 +37,60 @@
             return true;
         }
 
-        public static int CheckStabilitySystem(Board board, uint countIteration)
+        public static int StabilitySystem(Board board, uint countIteration)
         {
             Board copyBoard = new Board(board.Settings, board.AlgConnect);
 
             for (int i = 0; i < countIteration; i++)
             {
+                bool isStability = true;
+
                 copyBoard.Advance();
-                if (copyBoard.Cells.Equals(board.Cells))
+
+                for (int y = 0; y < copyBoard.Rows && isStability; y++)
+                {
+                    for (int x = 0; x < copyBoard.Colums; x++)
+                    {
+                        if (copyBoard.Cells[x, y].IsAlive != board.Cells[x, y].IsAlive)
+                        {
+                            isStability = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (isStability)
                     return i + 1;
             }
 
             return -1;
         }
 
-        public static int Classification(Board figExp, Board figAct)
+        public static int Classification(Map board, Map fig)
         {
             int count = 0;
-            bool equalsCells = false;
 
-            for (int y = 0; y < figAct.Rows; y++)
+            for (int y = 0; y < board.Rows; y++)
             {
-                for (int x = 0; x < figExp.Colums; x++)
+                for (int x = 0; x < board.Colums; x++)
                 {
-                    int yAbs = x, yRel = 0;
-                    for (; yRel < figAct.Rows; yAbs++, yRel++)
+                    bool equalsCells = true;
+
+                    for (int yAbs = y, yRel = 0; yRel < fig.Rows && equalsCells; yAbs++, yRel++)
                     {
-                        if (yAbs >= figExp.Rows)
+                        if (yAbs >= board.Rows)
                             yAbs = 0;
 
-                        int xAbs = y, xRel = 0;
-
-                        if (figExp.Cells[xAbs, yAbs].IsAlive != figAct.Cells[xRel, yRel].IsAlive)
+                        for (int xAbs = x, xRel = 0; xRel < fig.Colums; xAbs++, xRel++)
                         {
-                            equalsCells = false;
-                            break;
-                        }
-                        else
-                            equalsCells = true;
-
-                        for (; xRel < figAct.Colums; xAbs++, xRel++)
-                        {
-                            if (xAbs >= figExp.Colums)
+                            if (xAbs >= board.Colums)
                                 xAbs = 0;
 
-                            if (figExp.Cells[xAbs, yAbs].IsAlive != figAct.Cells[xRel, yRel].IsAlive)
+                            if (board.Cells[xAbs, yAbs].IsAlive != fig.Cells[xRel, yRel].IsAlive)
                             {
                                 equalsCells = false;
                                 break;
                             }
-                            else
-                                equalsCells = true;
                         }
                     }
 
@@ -94,6 +99,34 @@
                 }
             }
             return count;
+        }
+
+
+        public static string AnalizeAll(Board board, Map[] figurs)
+        {
+            string ansStr = $"Statistic \"{board.Name}\" board\n";
+            ansStr += "Alive percent: " + AlivePercent(board).ToString() + "\n";
+            ansStr += "Vertical symmetry: " + VerticalSymmetry(board).ToString() + "\n";
+            ansStr += "Horizontal symmetry: " + HorizontalSymmetry(board).ToString() + "\n";
+
+            int stabilityAns = StabilitySystem(board, 10);
+
+            Dictionary<string, int> figs = new Dictionary<string, int>();
+            foreach (Map fig in figurs)
+                if (!figs.ContainsKey(fig.Name))
+                    figs.Add(fig.Name, 0);
+
+            ansStr += stabilityAns < 1 ?
+                "Board isn't stable\n" :
+                $"Board is stable: count iteration {stabilityAns}\n";
+
+            foreach (Map fig in figurs)
+                figs[fig.Name] += Classification(board, fig);
+
+            foreach (var fig in figs)
+                ansStr += $"Figure \"{fig.Key}\" {fig.Value}\n";
+
+            return ansStr;
         }
     }
 }

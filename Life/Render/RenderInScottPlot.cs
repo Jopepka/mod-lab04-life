@@ -4,12 +4,12 @@ namespace Life
 {
     public class RenderInScottPlot : IRender
     {
-        public void Render(Board board, SettingsRender settingsBoard)
+        public void Render()
         {
             throw new System.NotImplementedException();
         }
 
-        public void RenderStep(Board board, SettingsRender settingsBoard)
+        public void RenderStep()
         {
             throw new System.NotImplementedException();
         }
@@ -20,18 +20,9 @@ namespace Life
 
             double[,] cellsInDouble = new double[board.Rows, board.Colums];
 
-            //double[,] cellsInDouble = new double[board.Colums, board.Rows];
-
             for (int y = 0; y < board.Rows; y++)
                 for (int x = 0; x < board.Colums; x++)
-                {
-                    if (board.Cells[x, y].IsAlive)
-                        cellsInDouble[y, x] = 1;
-                    //cellsInDouble[x, y] = 1;
-                    else
-                        cellsInDouble[y, x] = 0;
-                    //cellsInDouble[x, y] = 0;
-                }
+                    cellsInDouble[y, x] = board.Cells[x, y].IsAlive ? 1 : 0;
 
             var hm = plt.AddHeatmap(cellsInDouble, lockScales: false);
 

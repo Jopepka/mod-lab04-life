@@ -4,14 +4,16 @@ namespace Life
 {
     public class SettingsMap
     {
+        public string Name { get; }
         public int Colums { get; }
         public int Rows { get; }
         public string BoardStr { get; private set; }
 
-        public SettingsMap(int colums = 50, int rows = 20, string boardStr = null)
+        public SettingsMap(int colums = 50, int rows = 20, string boardStr = null, string name = null)
         {
             Colums = colums;
             Rows = rows;
+            Name = name;
             if (boardStr != null)
                 SetBoardStr(boardStr);
         }

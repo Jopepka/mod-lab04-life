@@ -5,13 +5,14 @@
         public Cell[,] Cells { get; protected set; }
         public int Colums { get; private set; }
         public int Rows { get; private set; }
+        public string Name { get; set; }
         public double LiveDensity { get => ColculateLiveDensity(Cells); }
         public IConnectNeighbors AlgConnect { get; }
         public SettingsMap Settings
         {
             get
             {
-                SettingsMap settings = new SettingsMap(Colums, Rows, CriateStrFromCells(Cells));
+                SettingsMap settings = new SettingsMap(Colums, Rows, CriateStrFromCells(Cells), Name);
                 return settings;
             }
         }
@@ -20,6 +21,7 @@
         {
             Colums = settings.Colums;
             Rows = settings.Rows;
+            Name = settings.Name;
 
             AlgConnect = algConnect;
             Cells = InitilazeCells(Colums, Rows);
@@ -37,8 +39,7 @@
 
         public void SaveToJson(string path)
         {
-            SettingsMap settings = new SettingsMap(Colums, Rows, CriateStrFromCells(Cells));
-            SaveJson<SettingsMap>.SaveToJson(path, settings);
+            SaveJson<SettingsMap>.SaveToJson(path, Settings);
         }
 
         protected Cell[,] InitilazeCells(int colums, int rows)
@@ -57,7 +58,7 @@
         protected Cell[,] CriateCellsFromStr(string str)
         {
             string[] strLines = str.Split('\n');
-            Cell[,] cells = InitilazeCells(strLines[0].Length, strLines.Length);
+            Cell[,] cells = InitilazeCells(strLines[0].Length, strLines.Length - 1);
 
             for (int y = 0; y < strLines.Length; y++)
                 for (int x = 0; x < strLines[y].Length; x++)
@@ -107,7 +108,7 @@
                 }
             }
 
-            return countLive / countEmpty;
+            return (double)(countLive) / countEmpty;
         }
     }
 }
