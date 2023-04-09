@@ -8,7 +8,7 @@ namespace TestNewOpportunity
     {
 
         [TestMethod]
-        public void TestLoad3()
+        public void TestLoad1()
         {
             string path = "SaveJson/TestLoad2.txt";
             SettingsMap[] settingsLoad = SaveJson<SettingsMap[]>.LoadFromJSon(path);
