@@ -1,6 +1,0 @@
-C:\Users\mr_fi\source\repos\mod-lab04-life\TestNewOpportunity\bin\Debug\netcoreapp3.0\CoverletSourceRootsMapping
-C:\Users\mr_fi\source\repos\mod-lab04-life\TestNewOpportunity\obj\Debug\netcoreapp3.0\TestNewOpportunity.csproj.AssemblyReference.cache
-C:\Users\mr_fi\source\repos\mod-lab04-life\TestNewOpportunity\obj\Debug\netcoreapp3.0\TestNewOpportunity.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\mr_fi\source\repos\mod-lab04-life\TestNewOpportunity\obj\Debug\netcoreapp3.0\TestNewOpportunity.AssemblyInfoInputs.cache
-C:\Users\mr_fi\source\repos\mod-lab04-life\TestNewOpportunity\obj\Debug\netcoreapp3.0\TestNewOpportunity.AssemblyInfo.cs
-C:\Users\mr_fi\source\repos\mod-lab04-life\TestNewOpportunity\obj\Debug\netcoreapp3.0\TestNewOpportunity.csproj.CoreCompileInputs.cache
